@@ -14,20 +14,17 @@ export default function InputOrder({ setCurrentPage }) {
     useEffect(() => {
         const storedPersons = JSON.parse(localStorage.getItem("dataPerson")) || [];
         setDataPerson(storedPersons);
-    }, []);
 
-    // 🔥 Pastikan tabel diperbarui secara langsung setelah penambahan data
-    useEffect(() => {
         const handleStorageChange = () => {
-        const updatedPersons = JSON.parse(localStorage.getItem("dataPerson")) || [];
-        setDataPerson(updatedPersons);
-        };
-
-        // Event listener untuk mendeteksi perubahan di Local Storage
-        window.addEventListener("storage", handleStorageChange);
-
-        return () => {
-        window.removeEventListener("storage", handleStorageChange);
+            const updatedPersons = JSON.parse(localStorage.getItem("dataPerson")) || [];
+            setDataPerson(updatedPersons);
+            };
+    
+            // Event listener untuk mendeteksi perubahan di Local Storage
+            window.addEventListener("storage", handleStorageChange);
+    
+            return () => {
+            window.removeEventListener("storage", handleStorageChange);
         };
     }, []);
 

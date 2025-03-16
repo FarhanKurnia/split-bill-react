@@ -1,5 +1,4 @@
 export default function FooterAdditionalCost({setCurrentPage}) {
-    console.log(setCurrentPage)
     return(
     <div>
         {/* Buttons */}

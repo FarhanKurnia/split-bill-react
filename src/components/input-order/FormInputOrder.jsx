@@ -10,6 +10,7 @@ export default function FormInputOrder({setDataPerson, dataPerson}) {
         // Ambil data dari localStorage saat halaman dimuat
         const storedPersons = JSON.parse(localStorage.getItem("dataPerson")) || [];
         setDataPerson(storedPersons);
+        
         if (storedPersons.length > 0) {
             setSelectedPerson(storedPersons[0].id.toString()); // Set default hanya sekali
         }
