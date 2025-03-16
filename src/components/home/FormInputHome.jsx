@@ -6,10 +6,17 @@ export default function FormInputHome({ setDataPerson, dataPerson }) {
     const handleAddPerson = () => {
         if (!name.trim()) return; // Cegah input kosong
 
+        const getInitials = (name) => {
+            const nameParts = name.split(" "); // Memisahkan nama berdasarkan spasi
+            const initials = nameParts.map(part => part.charAt(0).toUpperCase()).join(""); // Mengambil huruf pertama dari setiap bagian nama
+            return initials;
+        };
+
+        const initials = getInitials(name); // Mengambil inisial dari nama
         const newPerson = {
         id: Date.now(), // ID unik
         name,
-        avatar: "https://ui-avatars.com/api/?name=sss&background=random",
+        avatar: `https://ui-avatars.com/api/?name=${initials}&background=random`,
         };
 
         // Ambil data lama dari Local Storage
