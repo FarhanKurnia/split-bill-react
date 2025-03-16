@@ -1,7 +1,5 @@
 export default function FooterOrder({setCurrentPage, dataPerson}) {
   const hasOrders = dataPerson?.some(person => person.orders?.length > 0);
-  if (!hasOrders) return null; // Jika tidak ada order, footer tidak ditampilkan
-
     return(
     <div>
         {/* Buttons */}
@@ -11,11 +9,11 @@ export default function FooterOrder({setCurrentPage, dataPerson}) {
             >
               Back
             </button>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-md"
+            {hasOrders && (<button className="px-4 py-2 bg-blue-600 text-white rounded-md"
             onClick={() => setCurrentPage("additionalCost")}
             >
               Next
-            </button>
+            </button>)}
           </div>
     </div>
     )
