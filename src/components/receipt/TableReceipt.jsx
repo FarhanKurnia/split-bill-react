@@ -1,40 +1,23 @@
 export default function TableReceipt({dataPerson, setDataPerson, dataCost, setDataCost}){
-    // const data = [
-    //     {
-    //       no: 1,
-    //       name: "Farhan",
-    //       orders: [
-    //         { item: "Gacoan lvl 1 dqwdwqdwqd", price: "Rp. 12.000" },
-    //         { item: "Thai Green Tea TEAT TETATAT TET", price: "Rp. 14.000" },
-    //         { item: "Shipping Cost", price: "Rp. 1.666" },
-    //         { item: "Tax", price: "Rp. 4.666" },
-    //         { item: "Total", price: "Rp. 21.532", bold: true },
-    //       ],
-    //     },
-    //     {
-    //       no: 2,
-    //       name: "Madu",
-    //       orders: [
-    //         { item: "Udang Keju", price: "Rp. 8.000" },
-    //         { item: "Gacoan lvl 3", price: "Rp. 12.000" },
-    //         { item: "Shipping Cost", price: "Rp. 1.666" },
-    //         { item: "Tax", price: "Rp. 4.666" },
-    //         { item: "Total", price: "Rp. 21.532", bold: true },
-    //       ],
-    //     },
-    //   ];
+     // 1️⃣ Pisahkan biaya tambahan dan diskon
+      const totalAdditionalCost = dataCost
+      .filter(cost => cost.item !== "Discount") // Ambil hanya biaya tambahan (bukan diskon)
+      .reduce((sum, cost) => sum + cost.price, 0);
+
+    const totalDiscount = dataCost
+      .filter(cost => cost.item === "Discount") // Ambil hanya diskon
+      .reduce((sum, cost) => sum + cost.price, 0);
+
+    // 2️⃣ Hitung total biaya tambahan setelah diskon
+    const netAdditionalCost = totalAdditionalCost - totalDiscount;
+    const perPersonAdditionalCost = netAdditionalCost / dataPerson.length;
+
+    // 3️⃣ Fungsi untuk menghitung total per orang
     const calculateTotalPerPerson = (person) => {
-      // 1️⃣ Hitung total harga pesanan orang tersebut
       const totalOrders = person.orders.reduce((sum, order) => sum + order.price * order.quantity, 0);
-          
-      // 2️⃣ Hitung total biaya tambahan yang dibagi rata
-      const totalAdditionalCost = dataCost.reduce((sum, cost) => sum + cost.price, 0);
-      const perPersonAdditionalCost = totalAdditionalCost / dataPerson.length;
-      
-      // 3️⃣ Total keseluruhan orang tersebut
       return totalOrders + perPersonAdditionalCost;
     };
-      
+
     // 4️⃣ Hitung total semua orang
     const totalAllPersons = dataPerson.reduce((sum, person) => sum + calculateTotalPerPerson(person), 0);
 
