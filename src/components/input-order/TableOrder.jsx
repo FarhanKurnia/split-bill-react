@@ -1,5 +1,6 @@
 export default function TableOrder({dataPerson, setDataPerson}) {
-    if (dataPerson.length === 0) return null; // Jika data kosong, jangan render tabel
+    const hasOrders = dataPerson?.some(person => person.orders?.length > 0);
+    if (!hasOrders) return null; // Jika tidak ada order, footer tidak ditampilkan
     return(
         <div className="overflow-x-auto max-w-lg mx-auto">
             <table className="table">

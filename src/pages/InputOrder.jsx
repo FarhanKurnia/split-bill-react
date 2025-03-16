@@ -36,7 +36,7 @@ export default function InputOrder({ setCurrentPage }) {
             <FormInputOrder setDataPerson={setDataPerson} dataPerson={dataPerson}/>
             {dataPerson.length > 0 && <TableOrder dataPerson={dataPerson} setDataPerson={setDataPerson} />}
             {/* <TableOrder dataPerson={dataPerson}/> */}
-            <FooterOrder setCurrentPage={setCurrentPage}  />
+            <FooterOrder setCurrentPage={setCurrentPage} dataPerson={dataPerson} />
         </div>
     )
     

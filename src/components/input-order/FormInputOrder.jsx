@@ -1,24 +1,10 @@
 import { useEffect, useState } from "react";
 
 export default function FormInputOrder({setDataPerson, dataPerson}) {
-    const [value, setValue] = useState(1);
-
-    const handleChange = (e) => {
-        let num = parseInt(e.target.value) || 1; // Pastikan angka valid
-        if (num < 1) num = 1; // Tidak boleh kurang dari 1
-        if (num > 1000) num = 1000; // Tidak boleh lebih dari 100
-        setValue(num);
-        setQuantity(num)
-    };
-
-    // const [dataPerson, setDataPerson] = useState([]);
     const [menu, setMenu] = useState(""); // Nama menu
-    const [price, setPrice] = useState(0); // Harga
-    const [quantity, setQuantity] = useState(1); // Jumlah
+    const [price, setPrice] = useState(); // Harga
+    const [quantity, setQuantity] = useState(); // Jumlah
     const [selectedPerson, setSelectedPerson] = useState(0); // ID person yang dipilih
-
-    // Ambil data lama dari Local Storage
-    // const storedPersons = JSON.parse(localStorage.getItem("dataPerson")) || [];
 
     useEffect(() => {
         // Ambil data dari localStorage saat halaman dimuat
@@ -83,16 +69,10 @@ export default function FormInputOrder({setDataPerson, dataPerson}) {
                 <input
                 type="number"
                 value={quantity}
-                // onChange={(e) => {
-                //     let num = parseInt(e.target.value) || 1; // Pastikan angka valid
-                //     handleChange()
-                //     setQuantity(e.target.value)
-                // }}     
-                onChange={handleChange}                
+                onChange={(e) => setQuantity(e.target.value)}               
                 className="border border-gray-300 rounded-md px-3 py-2 w-full text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300"
-                min="1"
-                max="1000"
-                step="1"
+                placeholder="input quantity here"
+                required
                 />
                 <input
                 type="number"

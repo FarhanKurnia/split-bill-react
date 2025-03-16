@@ -1,4 +1,7 @@
-export default function FooterOrder({setCurrentPage}) {
+export default function FooterOrder({setCurrentPage, dataPerson}) {
+  const hasOrders = dataPerson?.some(person => person.orders?.length > 0);
+  if (!hasOrders) return null; // Jika tidak ada order, footer tidak ditampilkan
+
     return(
     <div>
         {/* Buttons */}
