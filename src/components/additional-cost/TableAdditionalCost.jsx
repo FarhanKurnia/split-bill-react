@@ -1,4 +1,21 @@
 export default function TableAdditionalCost(){
+    const dataCost = [
+        {
+            id: 1,
+            name: "Shipping cost",
+            price: 14000,
+        },
+        {
+            id: 2,
+            name: "Tax",
+            price: 5000,
+        },
+        {
+            id: 3,
+            name: "Discount",
+            price: 2000,
+        }
+      ];
     return(
         <div className="overflow-x-auto max-w-lg mx-auto">
             <table className="table">
@@ -11,32 +28,21 @@ export default function TableAdditionalCost(){
                 </tr>
                 </thead>
                 <tbody>
-                {/* row 1 */}
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        Shipping cost
-                    </td>
-                    <td>
-                        Rp. 20.000
-                    </td>
-                </tr>
-                {/* row 2 */}
-                <tr>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                        Tax
-                    </td>
-                    <td>
-                        Rp. 10.000
-                    </td>
-                </tr>
+                    {dataCost.map((cost) =>(
+                        <tr key={cost.id}>
+                            <td>
+                                {cost.id}
+                            </td>
+                            <td>
+                                {cost.name}
+                            </td>
+                            <td>
+                                {cost.price}
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
-            </div>
-        )
+        </div>
+    )
 }

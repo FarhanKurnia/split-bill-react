@@ -1,4 +1,33 @@
 export default function TableOrder() {
+    const dataOrder = [
+        {
+            id: 1,
+            name: "Farhan",
+            avatar:"https://img.daisyui.com/images/profile/demo/3@94.webp",
+            orders: [
+                { id: 1, item: "Gacoan lvl 1", price: "Rp. 12.000" },
+                { id: 2, item: "Thai Green Tea", price: "Rp. 14.000" },
+            ],
+        },
+        {
+            id: 2,
+            name: "Madu",
+            avatar: "https://img.daisyui.com/images/profile/demo/4@94.webp",
+            orders: [
+                { id: 3, item: "Udang Keju", price: "Rp. 8.000" },
+                { id: 4, item: "Gacoan lvl 3", price: "Rp. 12.000" },
+            ],
+        },
+        {
+            id: 3,
+            name: "Baskara",
+            avatar: "https://img.daisyui.com/images/profile/demo/5@94.webp",
+            orders: [
+                { id: 5, item: "Gacoan lvl 3", price: "Rp. 12.000" },
+            ],
+        }
+      ];
+
     return(
         <div className="overflow-x-auto max-w-lg mx-auto">
             <table className="table">
@@ -12,55 +41,20 @@ export default function TableOrder() {
                 </tr>
                 </thead>
                 <tbody>
-                {/* row 1 */}
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        1 x Gacoan
-                    </td>
-                    <td>
-                        Rp. 20.000
-                    </td>
-                    <td>
-                    <div className="flex items-center gap-3">
-                        <div className="font-bold">Hart Hagerty</div>
-                    </div>
-                    </td>
-                </tr>
-                {/* row 2 */}
-                <tr>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                        1 x Thai Greentea
-                    </td>
-                    <td>
-                        Rp. 20.000
-                    </td>
-                    <td>
-                        <div className="font-bold">Hart Hagerty</div>
-                    </td>
-                </tr>
-                {/* row 3 */}
-                <tr>
-                    <td>
-                        3
-                    </td>
-                    <td>
-                        1 x Udang Keju
-                    </td>
-                    <td>
-                        Rp. 12.000
-                    </td>
-                    <td>
-                    <div className="flex items-center gap-3">
-                        <div className="font-bold">Brice Swyre</div>
-                    </div>
-                    </td>
-                </tr>
+                {dataOrder.map((person) => 
+                    person.orders.map((order) => (
+                        <tr key={order.id}> 
+                            <td>{order.id}</td>
+                            <td>{order.item}</td>
+                            <td>{order.price}</td>
+                            <td>
+                                <div className="flex items-center gap-3">
+                                    <div className="font-bold">{person.name}</div>
+                                </div>
+                            </td>
+                        </tr>
+                    ))
+                )}
                 </tbody>
             </table>
             </div>

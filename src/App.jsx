@@ -10,7 +10,6 @@ import Receipt from "./pages/Receipt.jsx";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
-
   const renderPage = () => {
     switch (currentPage) {
       case "home":
