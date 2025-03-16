@@ -13,7 +13,7 @@ export default function AdditionalCost({ setCurrentPage }) {
 
             const handleStorageChange = () => {
                 const updatedCosts = JSON.parse(localStorage.getItem("dataCost")) || [];
-                setDataPerson(updatedCosts);
+                setDataCosts(updatedCosts);
                 };
         
                 // Event listener untuk mendeteksi perubahan di Local Storage

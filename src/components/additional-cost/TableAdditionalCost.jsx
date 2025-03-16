@@ -21,7 +21,7 @@ export default function TableAdditionalCost({ dataCost, setDataCost}){
                     {dataCost.map((cost, index) =>(
                         <tr key={cost.id}>
                             <td>
-                                {index}
+                                {index+1}
                             </td>
                             <td>
                                 {cost.item}
