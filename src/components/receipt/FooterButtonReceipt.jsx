@@ -1,4 +1,3 @@
-import html2canvas from "html2canvas";
 import domtoimage from "dom-to-image";
 
 
@@ -7,10 +6,11 @@ export default function FooterButtonReceipt({setCurrentPage}) {
     const element = document.getElementById("receipt-section");
     const originalColor = getComputedStyle(element).color;
     element.style.color = "black";
-
-    domtoimage.toPng(element,{
-      bgcolor: "white", // Warna latar belakang
-    })
+    domtoimage.toPng(element,
+      {
+        bgcolor: "white", // Warna latar belakang
+      }
+    )
       .then((dataUrl) => {
         const link = document.createElement("a");
         link.href = dataUrl;
@@ -22,6 +22,7 @@ export default function FooterButtonReceipt({setCurrentPage}) {
         console.error("Error capturing image:", error);
       });
   };
+  
     return(
     <div>
         {/* Buttons */}
