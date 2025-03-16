@@ -4,30 +4,29 @@ export default function FormInputHome({ setDataPerson, dataPerson }) {
     const [name, setName] = useState("");
 
     const handleAddPerson = () => {
-        if (!name.trim()) {
-            alert("Nama tidak boleh kosong!");
-            return;
-        }
+        if (!name.trim()) return; // Cegah input kosong
 
-        // Cek apakah nama sudah ada
-        if (dataPerson.some((person) => person.name.toLowerCase() === name.toLowerCase())) {
-            alert("Nama sudah ada!");
-            return;
-        }
+        const newPerson = {
+        id: Date.now(), // ID unik
+        name,
+        avatar: "https://ui-avatars.com/api/?name=sss&background=random",
+        };
 
-        // Tambah orang baru
-        setDataPerson((prev) => [
-            ...prev,
-            {
-                id: Date.now(), // ID unik
-                name,
-                avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png",
-            },
-        ]);
+        // Ambil data lama dari Local Storage
+        const storedPersons = JSON.parse(localStorage.getItem("dataPerson")) || [];
 
-        // Reset input setelah menambah
-        setName("");
-    };
+        // Tambahkan data baru ke array
+        const updatedPersons = [...storedPersons, newPerson];
+
+        // Simpan ke Local Storage
+        localStorage.setItem("dataPerson", JSON.stringify(updatedPersons));
+
+        // 🔥 Langsung perbarui state agar UI langsung berubah tanpa refresh
+        setDataPerson(updatedPersons);
+
+        // Reset input setelah ditambahkan
+        setName("")
+    }
     return(
         <div className="flex flex-col items-center justify-center w-full">
             <label className="font-semibold whitespace-nowrap">Input Name</label>
