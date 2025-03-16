@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 export default function FormInputOrder({setDataPerson, dataPerson}) {
     const [menu, setMenu] = useState(""); // Nama menu
-    const [price, setPrice] = useState(); // Harga
-    const [quantity, setQuantity] = useState(); // Jumlah
+    const [price, setPrice] = useState(""); // Harga
+    const [quantity, setQuantity] = useState(""); // Jumlah
     const [selectedPerson, setSelectedPerson] = useState(0); // ID person yang dipilih
 
     useEffect(() => {
@@ -26,8 +26,8 @@ export default function FormInputOrder({setDataPerson, dataPerson}) {
             id: Date.now(), // ID unik
             item: menu,
             price: +price,
-            quantity: quantity,
-            totalPrice: (+price)*quantity,
+            quantity: +quantity,
+            totalPrice: (+price)*(+quantity),
         };
 
         // Update localStorage
@@ -47,7 +47,7 @@ export default function FormInputOrder({setDataPerson, dataPerson}) {
         // Reset input fields
         setMenu("");
         setPrice("");
-        setQuantity(1);
+        setQuantity("");
         if (dataPerson.length > 0) {
             setSelectedPerson(dataPerson[0].id);
         }
