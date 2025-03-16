@@ -80,7 +80,8 @@ export default function TableReceipt({dataPerson, setDataPerson, dataCost, setDa
                 <span>{totalAllPersons}</span>
             </div>
             <span className="text-sm text-gray-400 mt-1">*Price includes tax and shipping costs</span>
-            </div>
+            <span className="text-xs opacity-40 py-6">made with 🩶 by farhankurnia </span>
+          </div>
         </div>
     )
     

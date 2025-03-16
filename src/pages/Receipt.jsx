@@ -31,8 +31,10 @@ export default function Receipt({ setCurrentPage }) {
 
     return(
         <div>
-            <HeaderReceipt />            
-            <TableReceipt dataPerson={dataPerson} setDataPerson={setDataPerson} dataCost={dataCost} setDataCost={setDataCost} />
+            <div id="receipt-section">
+                <HeaderReceipt />            
+                <TableReceipt dataPerson={dataPerson} setDataPerson={setDataPerson} dataCost={dataCost} setDataCost={setDataCost} />
+            </div>
             <FooterButtonReceipt setCurrentPage={setCurrentPage} />
         </div>
     )
