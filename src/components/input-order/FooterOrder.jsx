@@ -1,5 +1,6 @@
 export default function FooterOrder({setCurrentPage, dataPerson}) {
-  const hasOrders = dataPerson?.some(person => person.orders?.length > 0);
+  const hasOrders = dataPerson?.every(person => person.orders?.length >= 1);
+  // const hasPersons = dataPerson?.some(person => person?.length > 1);
     return(
     <div>
         {/* Buttons */}

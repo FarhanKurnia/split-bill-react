@@ -27,7 +27,7 @@ export default function TableAdditionalCost({ dataCost, setDataCost}){
                                 {cost.item}
                             </td>
                             <td>
-                                {cost.price}
+                                Rp. {cost.price.toLocaleString()}
                             </td>
                             <td>
                             <button className="btn btn-ghost p-2 hover:bg-red-100 rounded-full"

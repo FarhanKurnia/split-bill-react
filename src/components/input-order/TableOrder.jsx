@@ -36,7 +36,7 @@ export default function TableOrder({dataPerson, setDataPerson}) {
                     <tr key={order.id}>
                         <td>{index + 1}</td>
                         <td>{order.item}</td>
-                        <td>{order.quantity} x {order.price}</td>
+                        <td>{order.quantity} x Rp. {order.price.toLocaleString()}</td>
                         <td>
                         <div className="flex items-center gap-3">
                             <div className="font-bold">{person.name}</div>

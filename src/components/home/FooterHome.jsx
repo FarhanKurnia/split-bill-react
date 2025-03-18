@@ -1,5 +1,5 @@
 export default function FooterHome({ setCurrentPage,  dataPerson}) {
-  if (dataPerson.length === 0) return null; // Jika data kosong, jangan render tabel
+  if (dataPerson.length < 2) return null; // Jika data kosong, jangan render tabel
     return(
     <div>
         {/* Buttons */}

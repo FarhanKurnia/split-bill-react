@@ -77,7 +77,7 @@ export default function TableReceipt({dataPerson, setDataPerson, dataCost, setDa
           <div className="flex flex-col font-semibold mt-4 p-2 border-t border-gray-500">
             <div className="flex justify-between">
                 <span>Total</span>
-                <span>{totalAllPersons}</span>
+                <span>Rp. {totalAllPersons.toLocaleString()}</span>
             </div>
             <span className="text-sm text-gray-400 mt-1">*Price includes tax and shipping costs</span>
             <span className="text-xs opacity-40 py-6">made with 🩶 by farhankurnia </span>
