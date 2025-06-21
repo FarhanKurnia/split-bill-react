@@ -3,21 +3,25 @@ export default function TableOrder({dataPerson, setDataPerson}) {
     if (!hasOrders) return null; // Jika tidak ada order, footer tidak ditampilkan
 
     const handleRemoveOrder = (orderId) => {
-        // 1️⃣ Ambil data dari localStorage
+        // Ambil data dari localStorage
         let storedData = JSON.parse(localStorage.getItem("dataPerson")) || [];
     
-        // 2️⃣ Looping ke setiap `person` dan filter `orders`
+        // Looping ke setiap `person` dan filter `orders`
         storedData = storedData.map(person => ({
             ...person,
             orders: person.orders.filter(order => order.id !== orderId) // Hapus order dengan ID tertentu
         }));
     
-        // 3️⃣ Simpan kembali data yang sudah dihapus ke localStorage
+        // Simpan kembali data yang sudah dihapus ke localStorage
         localStorage.setItem("dataPerson", JSON.stringify(storedData));
     
-        // 4️⃣ Perbarui state agar UI langsung berubah
+        // Perbarui state agar UI langsung berubah
         setDataPerson(storedData);
     };
+
+    let globalIndex = 0;
+    const getRowNumber = () => ++globalIndex;   
+
     return(
         <div className="overflow-x-auto max-w-lg mx-auto">
             <table className="table table-xs">
@@ -34,7 +38,7 @@ export default function TableOrder({dataPerson, setDataPerson}) {
                 {dataPerson.map((person) => 
                     (person.orders || []).map((order, index) => (
                     <tr key={order.id}>
-                        <td>{index + 1}</td>
+                        <td>{getRowNumber()}</td>
                         <td>{order.item}</td>
                         <td>{order.quantity} x Rp. {order.price.toLocaleString()}</td>
                         <td>
@@ -56,8 +60,7 @@ export default function TableOrder({dataPerson, setDataPerson}) {
                 )}
                 </tbody>
             </table>
-            </div>
-        )
-    
+        </div>
+    )
 }
 
